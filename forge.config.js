@@ -5,13 +5,17 @@ module.exports = {
   packagerConfig: {
     asar: true,
     extraResource: ["betalk-extension"],
-    osxSign: {},
-    osxNotarize: {
-      tool: "notarytool",
-      appleId: process.env.APPLE_ID,
-      appleIdPassword: process.env.APPLE_PASSWORD,
-      teamId: process.env.APPLE_TEAM_ID,
+    osxSign: { "identity": "Developer ID Application: Miguel Morkin (9DQK3P85J6)",
+      "hardenedRuntime": true,
+      "entitlements": "entitlements.plist",
+      "entitlementsInherit": "entitlements.plist"
     },
+    "osxNotarize": {
+      "tool": "notarytool",
+      "appleId": "mmorkin@gmail.com",
+      "appleIdPassword": "yvsz-ffgz-qzfa-wmwy",
+      "teamId": "9DQK3P85J6"
+    }
   },
   rebuildConfig: {},
   makers: [

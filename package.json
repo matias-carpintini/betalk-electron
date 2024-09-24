@@ -7,7 +7,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "DEBUG=electron-forge:* electron-forge make",
-    "publish": "electron-forge publish",
+    "publish": "DEBUG=electron-forge:* electron-forge publish",
     "build": "electron-builder"
   },
   "author": "",
@@ -29,6 +29,7 @@
   "dependencies": {
     "auto-launch": "^5.0.6",
     "electron-squirrel-startup": "^1.0.1",
+    "minify": "^11.4.1",
     "update-electron-app": "^3.0.0"
   },
   "build": {
@@ -39,5 +40,22 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/matias-carpintini/betalk-electron.git"
+  },
+  "electronVersion": "32.1.2",
+  "forge": {
+    "packagerConfig": {
+      "osxSign": {
+        "identity": "Developer ID Application: Miguel Morkin (9DQK3P85J6)",
+        "hardenedRuntime": true,
+        "entitlements": "entitlements.plist",
+        "entitlementsInherit": "entitlements.plist"
+      },
+      "osxNotarize": {
+        "tool": "notarytool",
+        "appleId": "mmorkin@gmail.com",
+        "appleIdPassword": "yvsz-ffgz-qzfa-wmwy",
+        "teamId": "9DQK3P85J6"
+      }
+    }
   }
 }

@@ -6,3 +6,4 @@ betalk-extension/README.md
 betalk-extension/webpack.config.js
 betalk-extension/.babelrc
 out/
+dist/

@@ -1,7 +1,6 @@
 node_modules/
 betalk-extension/node_modules/
 betalk-extension/package-lock.json
-betalk-extension/src/
 betalk-extension/package.json
 betalk-extension/README.md
 betalk-extension/webpack.config.js

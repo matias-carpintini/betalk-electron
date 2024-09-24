@@ -1,9 +1,9 @@
-require("update-electron-app")();
-
 const { app, BrowserWindow, ipcMain, session, screen } = require("electron"); // Add screen module
 const path = require("path");
 const AutoLaunch = require("auto-launch");
 const { exec } = require("child_process");
+const { updateElectronApp } = require("update-electron-app");
+updateElectronApp();
 
 let mainWindow;
 

@@ -1,6 +1,6 @@
 {
   "name": "voltapp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -33,5 +33,9 @@
     "extraResources": [
       "./betalk-extension"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matias-carpintini/betalk-electron.git"
   }
 }

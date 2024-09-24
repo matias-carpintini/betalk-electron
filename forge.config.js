@@ -6,6 +6,12 @@ module.exports = {
     asar: true,
     extraResource: ["betalk-extension"],
     osxSign: {},
+    osxNotarize: {
+      tool: "notarytool",
+      appleId: process.env.APPLE_ID,
+      appleIdPassword: process.env.APPLE_PASSWORD,
+      teamId: process.env.APPLE_TEAM_ID,
+    },
   },
   rebuildConfig: {},
   makers: [
@@ -39,14 +45,6 @@ module.exports = {
       },
     },
   ],
-  osxSign: {},
-  // ...
-  osxNotarize: {
-    tool: "notarytool",
-    appleId: process.env.APPLE_ID,
-    appleIdPassword: process.env.APPLE_PASSWORD,
-    teamId: process.env.APPLE_TEAM_ID,
-  },
   plugins: [
     {
       name: "@electron-forge/plugin-auto-unpack-natives",

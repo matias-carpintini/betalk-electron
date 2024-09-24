@@ -5,6 +5,7 @@ module.exports = {
   packagerConfig: {
     asar: true,
     extraResource: ["betalk-extension"],
+    osxSign: {},
   },
   rebuildConfig: {},
   makers: [

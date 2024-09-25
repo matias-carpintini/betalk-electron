@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, session, screen } = require("electron"); // Add screen module
 const path = require("path");
+const fs = require("fs");
 const AutoLaunch = require("auto-launch");
 const { exec } = require("child_process");
 const { updateElectronApp } = require("update-electron-app");
@@ -7,13 +8,17 @@ updateElectronApp();
 
 let mainWindow;
 
+// Read version from package.json
+const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')));
+const appVersion = packageJson.version;
+
 function createWindow() {
   const { height } = screen.getPrimaryDisplay().workAreaSize; // Get the height of the primary display
 
   mainWindow = new BrowserWindow({
     width: 1024,
     height: height, // Set the height to match the screen height
-    title: "BeTalk",
+    title: `Volt v${appVersion}`, // Set the title with version number
     webPreferences: {
       contextIsolation: true,
     },
@@ -26,7 +31,7 @@ function createWindow() {
   });
 
   mainWindow.webContents.on("did-finish-load", () => {
-    mainWindow.setTitle("BeTalk");
+    mainWindow.setTitle(`Volt v${appVersion}`); // Update the title after the page loads
   });
 
   mainWindow.webContents.on("will-navigate", (event, url) => {
@@ -83,52 +88,12 @@ function initializeWhatsApp() {
   console.log("WhatsApp initialized event dispatched.");
 }
 
-app.whenReady().then(async () => {
-  // let isDev = false;
-  // try {
-  //   isDev = (await import("electron-is-dev")).default;
-  // } catch (err) {
-  //   console.error("Failed to load electron-is-dev:", err);
-  // }
-
-  createWindow();
-
-  // Set up auto-launch
-  const autoLauncher = new AutoLaunch({
-    name: "Volt",
-    path: app.getPath("exe"),
-  });
-
-  autoLauncher
-    .isEnabled()
-    .then((isEnabled) => {
-      if (!isEnabled) autoLauncher.enable();
-    })
-    .catch((err) => {
-      console.error("Failed to set up auto-launch:", err);
-    });
-
-  // Remove WhatsApp from login items
-  //    const script = `
-  //    tell application "System Events"
-  //        delete login item "WhatsApp"
-  //    end tell
-  //    `;
-  //    exec(`osascript -e '${script}'`, (err, stdout, stderr) => {
-  //        if (err) {
-  //            console.error('Failed to remove WhatsApp from login items:', err);
-  //            return;
-  //        }
-  //        console.log('WhatsApp removed from login items');
-  //    });
-});
-
+app.on("ready", createWindow);
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
   }
 });
-
 app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();

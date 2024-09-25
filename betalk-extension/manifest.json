@@ -1,7 +1,7 @@
 {
   "name": "Betalk",
   "description": "If WhatsApp and SuperHuman had a baby",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "manifest_version": 3,
   "background": {
     "service_worker": "dist/background.js",

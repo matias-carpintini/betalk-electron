@@ -15,7 +15,7 @@ export function drawer(title, content) {
               </span>
             </div>
           </header>
-          <div class="x5yr21d x78zum5 xdt5ytf x6ikm8r x10wlt62">
+          <div class="x5yr21d x78zum5 xdt5ytf x6ikm8r x10wlt62" style="overflow-y: auto;">
             <div class="x1c4vz4f xs83m0k xdl72j9 x1g77sc7 x78zum5 xozqiw3 x1oa3qoh x12fk4p8 xeuugli x2lwn1j x1nhvcw1 xdt5ytf x6s0dn4" style="flex-shrink: 0;">
               <div class="xh8yej3">
                 ${content}

@@ -33,7 +33,7 @@ export function setupKeyboardListeners() {
       if (isUserTyping()) return;
 
       if (
-        event.key === "ArrowDown" &&
+        (event.key === "ArrowDown" || event.key === "j") &&
         !event.metaKey &&
         !event.ctrlKey &&
         !event.altKey &&
@@ -45,7 +45,7 @@ export function setupKeyboardListeners() {
       }
 
       if (
-        event.key === "ArrowUp" &&
+        (event.key === "ArrowUp" || event.key === "k") &&
         !event.metaKey &&
         !event.ctrlKey &&
         !event.altKey &&

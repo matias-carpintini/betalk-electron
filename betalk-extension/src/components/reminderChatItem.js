@@ -9,7 +9,7 @@ export function reminderChatItem(chatId, userName, timestamp) {
         display: block;
       "
       data-chat-id=${chatId}
-      data-chat-username=${userName}
+      data-chat-username="${userName}"
     >
       <div class="x1n2onr6">
         <div tabindex="-1" class="">

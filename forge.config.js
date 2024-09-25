@@ -5,11 +5,9 @@ module.exports = {
   packagerConfig: {
     asar: true,
     extraResource: ["betalk-extension"],
-    osxSign: { "identity": "Developer ID Application: Miguel Morkin (9DQK3P85J6)",
-      "hardenedRuntime": true,
-      "entitlements": "entitlements.plist",
-      "entitlementsInherit": "entitlements.plist"
+    osxSign: {
     },
+    icon: "assets/ray.icns",
     "osxNotarize": {
       "tool": "notarytool",
       "appleId": "mmorkin@gmail.com",

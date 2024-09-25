@@ -35,7 +35,8 @@
   "build": {
     "extraResources": [
       "./betalk-extension"
-    ]
+    ],
+    "icon": "assets/ray.icns"
   },
   "repository": {
     "type": "git",
@@ -45,17 +46,20 @@
   "forge": {
     "packagerConfig": {
       "osxSign": {
-        "identity": "Developer ID Application: Miguel Morkin (9DQK3P85J6)",
-        "hardenedRuntime": true,
-        "entitlements": "entitlements.plist",
-        "entitlementsInherit": "entitlements.plist"
       },
       "osxNotarize": {
         "tool": "notarytool",
         "appleId": "mmorkin@gmail.com",
         "appleIdPassword": "yvsz-ffgz-qzfa-wmwy",
         "teamId": "9DQK3P85J6"
-      }
+      },
+      "icon": "assets/ray.icns",
+      "extraResource": ["betalk-extension"],
+      "asar": {
+        "unpack": "{{**/*.node,**/*.node},**/*.node}"
+      },
+      "overwrite": true,
+      "ignore": ["^/out/"]
     }
   }
 }

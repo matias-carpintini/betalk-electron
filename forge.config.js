@@ -6,14 +6,15 @@ module.exports = {
     asar: true,
     extraResource: ["betalk-extension"],
     osxSign: {
+      identity: "Apple Development: Miguel Morkin (PJNDLJG6MN)"
     },
     icon: "assets/ray.icns",
-    "osxNotarize": {
-      "tool": "notarytool",
-      "appleId": "mmorkin@gmail.com",
-      "appleIdPassword": "yvsz-ffgz-qzfa-wmwy",
-      "teamId": "9DQK3P85J6"
-    }
+    osxNotarize: {
+      tool: "notarytool",
+      appleApiKey: "./signing/AuthKey_DQ3GN5MR42.p8",
+      appleApiKeyId: "DQ3GN5MR42",
+      appleApiIssuer: "c8d6bf76-c8d9-400a-a255-92b87ebefffd",
+    },
   },
   rebuildConfig: {},
   makers: [

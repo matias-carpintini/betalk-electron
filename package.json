@@ -1,6 +1,6 @@
 {
   "name": "voltapp",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -50,12 +50,13 @@
   "forge": {
     "packagerConfig": {
       "osxSign": {
+        "identity": "Apple Development: Miguel Morkin (PJNDLJG6MN)"
       },
       "osxNotarize": {
         "tool": "notarytool",
-        "appleId": "mmorkin@gmail.com",
-        "appleIdPassword": "yvsz-ffgz-qzfa-wmwy",
-        "teamId": "9DQK3P85J6"
+        "appleApiKey": "./signing/AuthKey_DQ3GN5MR42.p8",
+        "appleApiKeyId": "DQ3GN5MR42",
+        "appleApiIssuer": "c8d6bf76-c8d9-400a-a255-92b87ebefffd"
       },
       "icon": "assets/ray.icns",
       "extraResource": ["betalk-extension"],

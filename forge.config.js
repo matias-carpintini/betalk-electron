@@ -4,24 +4,16 @@ const { FuseV1Options, FuseVersion } = require("@electron/fuses");
 module.exports = {
   packagerConfig: {
     asar: true,
-    icon: "assets/ray.icns",
+    extraResource: ["betalk-extension"],
     osxSign: {
-      identity: "Apple Development: Miguel Morkin (PJNDLJG6MN)",
-      hardenedRuntime: true,
-      entitlements: "assets/entitlements.plist",
-      entitlementsInherit: "assets/entitlements.plist"
     },
-    osxNotarize: {
-      appleId: "mmorkin@gmail.com",
-      appleIdPassword: "yvsz-ffgz-qzfa-wmwy",
-      teamId: "9DQK3P85J6"
-    },
-    ignore: [
-      "^/out/"
-    ],
-    extraResource: [
-      "betalk-extension"
-    ]
+    icon: "assets/ray.icns",
+    "osxNotarize": {
+      "tool": "notarytool",
+      "appleId": "mmorkin@gmail.com",
+      "appleIdPassword": "yvsz-ffgz-qzfa-wmwy",
+      "teamId": "9DQK3P85J6"
+    }
   },
   rebuildConfig: {},
   makers: [

@@ -36,7 +36,11 @@
     "extraResources": [
       "./betalk-extension"
     ],
-    "icon": "assets/ray.icns"
+    "icon": "assets/ray.icns",
+    "files": [
+      "**/*",
+      "!betalk-extension/.git"
+    ]
   },
   "repository": {
     "type": "git",

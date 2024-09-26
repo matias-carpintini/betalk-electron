@@ -1,6 +1,6 @@
 {
   "name": "voltapp",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -8,11 +8,12 @@
     "package": "electron-forge package",
     "make": "DEBUG=electron-forge:* electron-forge make",
     "publish": "DEBUG=electron-forge:* electron-forge publish",
-    "build": "electron-builder"
+    "dist": "electron-builder",
+    "package:macos": "electron-builder --mac"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "volt Electron application",
   "devDependencies": {
     "@electron-forge/cli": "^7.5.0",
     "@electron-forge/maker-deb": "^7.5.0",
@@ -33,14 +34,29 @@
     "update-electron-app": "^3.0.0"
   },
   "build": {
-    "extraResources": [
+    "appId": "com.volt.app",
+    "productName": "volt",
+    "directories": {
+      "output": "releases/${platform}/${arch}"
+   },
+   "mac": {
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "./entitlements.plist",
+      "entitlementsInherit": "./entitlements.plist",
+      "category": "public.app-category.productivity"
+   },
+   "extraResources": [
       "./betalk-extension"
     ],
     "icon": "assets/ray.icns",
     "files": [
       "**/*",
       "!betalk-extension/.git"
-    ]
+    ],
+    "dmg": {
+      "sign": true
+    }
   },
   "repository": {
     "type": "git",

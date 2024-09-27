@@ -18,7 +18,9 @@ export function initializeDone() {
         const newDoneBtn = chatActionButton(
           "check",
           () => markChatDone(chat.chatId),
-          "doneBtn"
+          "doneBtn",
+          "Mark as Done",
+          "E"
         );
 
         if (existingDoneBtn) {

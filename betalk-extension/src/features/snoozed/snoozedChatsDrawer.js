@@ -27,7 +27,10 @@ export function snoozedChatsDrawer() {
         .join("")
     : "";
 
-  openDrawerLeft(drawer("Reminders", chatElements), "snoozedChats");
+  openDrawerLeft(
+    drawer("Reminders", chatElements),
+    `snoozedChats ${snoozedChats.length}`
+  );
 
   // This make a request to WhatsApp through injected scripts
   // asks for chat details and prints to the unloaded chat element.

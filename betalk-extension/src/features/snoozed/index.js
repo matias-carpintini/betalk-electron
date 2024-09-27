@@ -44,7 +44,9 @@ export function initializeSnoozed() {
         const newReminderBtn = chatActionButton(
           "schedule",
           () => snoozeForm(chat),
-          "reminderBtn"
+          "reminderBtn",
+          "Remind Me",
+          "H"
         );
 
         if (existingReminderBtn) {

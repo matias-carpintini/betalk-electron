@@ -71,9 +71,13 @@ export function reminderChatItem(chatId, userName, timestamp) {
                   <span class="">
                     <button
                       class="xn6xy2s x1qx5ct2 xsgj6o6 xq22nx5 x16dsc37 reminderBtn"
-                      style="width: 20px; opacity: 1"
+                      style="width: 20px; opacity: 1; position: relative"
                     >
                       <span class="material-symbols-outlined fill">schedule</span>
+                      <div class="tooltip">
+                        Remind Me
+                        <kbd>H</kbd>
+                      </div>
                     </button>
                   </span>
                 </div>

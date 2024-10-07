@@ -1,4 +1,5 @@
 import Modal from "../../components/modal";
+import { formatTimestamp } from "../../utils/domHelpers";
 import { requestSnooze } from "./snoozeChat";
 import { snoozedChats } from "./storage";
 import { requestUnsnooze } from "./unsnoozeChat";
@@ -8,6 +9,10 @@ export function snoozeForm(chat) {
   const existingReminder =
     snoozedChats &&
     snoozedChats.find((reminder) => reminder.chatId === chat.chatId);
+
+  // Get the most recent reminder if available
+  const lastUsedReminder =
+    snoozedChats && snoozedChats[snoozedChats.length - 1];
 
   const now = new Date();
 
@@ -41,10 +46,10 @@ export function snoozeForm(chat) {
   let laterTodayTime;
   let hasLaterTodayOption = true;
 
-  // Determine "Later today" time, rounding to the next hour
+  // Determine "Later today" time, setting to 18:00 if before 18:00
   if (now.getHours() < 18) {
     laterTodayTime = new Date();
-    laterTodayTime.setHours(now.getHours() + 2, 0, 0, 0); // Round to the next hour
+    laterTodayTime.setHours(18, 0, 0, 0); // Set to 18:00
   } else {
     hasLaterTodayOption = false;
   }
@@ -67,6 +72,26 @@ export function snoozeForm(chat) {
     );
     return `${days[tomorrow.getDay()]}, 8:00 AM`;
   }
+
+  // Determine if "Last Used" should be displayed
+  const shouldDisplayLastUsed =
+    lastUsedReminder && Number(lastUsedReminder.until) > now.getTime();
+
+  const lastUsedOptionHTML = shouldDisplayLastUsed
+    ? `
+    <label class="option">
+      <span style="flex: 1;">
+        <input type="radio" name="snoozeOption" value="lastUsed">
+        Last Used
+      </span>
+      <span class="custom">
+        <span>
+          ${formatTimestamp(lastUsedReminder.until)}
+        </span>
+      </span>
+    </label>
+  `
+    : "";
 
   const laterTodayOptionHTML = laterTodayTime
     ? `
@@ -96,6 +121,7 @@ export function snoozeForm(chat) {
           </div>
           <div class="modal-body xdt5ytf xubnuyq xw2csxc x1odjw0f xo6wm36 x1iegka5 xc530u0 x8zx4qv x1gcmwly x17sy6yu xwsakjw x1vz1ssi xxbb1rq xwxc41k">
             <div class="snooze-options">
+              ${lastUsedOptionHTML}
               ${laterTodayOptionHTML}
               <label class="option">
                 <span style="flex: 1;">
@@ -126,14 +152,14 @@ export function snoozeForm(chat) {
         class="x78zum5 x8hhl5t xp4054r xuxw1ft x123j3cw x1gtfrk1 x156go17 x1sqk8ge"
       >
         <div class="x1c4vz4f xs83m0k xdl72j9 x1g77sc7 x78zum5 xozqiw3 x1oa3qoh x12fk4p8 xeuugli x2lwn1j x1nhvcw1 x1q0g3np xuk3077 x40hh3e" style="flex: 1;">
-        <select class="x1c4vz4f xs83m0k xdl72j9 x1g77sc7 snoozeConditionSelect" name="snoozeCondition">
-          <option value="regardless" ${
-            snoozeCondition === "regardless" ? "selected" : ""
-          }>Regardless</option>
-          <option value="ifNoReply" ${
-            snoozeCondition === "ifNoReply" ? "selected" : ""
-          }>If no reply</option>
-        </select>
+          <select class="x1c4vz4f xs83m0k xdl72j9 x1g77sc7 snoozeConditionSelect" name="snoozeCondition">
+            <option value="regardless" ${
+              snoozeCondition === "regardless" ? "selected" : ""
+            }>Regardless</option>
+            <option value="ifNoReply" ${
+              snoozeCondition === "ifNoReply" ? "selected" : ""
+            }>If no reply</option>
+          </select>
         </div>
         <div
           class="x13a6bvl x1c4vz4f xs83m0k xdl72j9 x1g77sc7 x78zum5 xozqiw3 x1oa3qoh x12fk4p8 xeuugli x2lwn1j x1nhvcw1 x1q0g3np xuk3077 x40hh3e"
@@ -190,7 +216,9 @@ export function snoozeForm(chat) {
         snoozeCondition = formData.get("snoozeCondition");
         let snoozeTime;
 
-        if (snoozeOption === "laterToday" && hasLaterTodayOption) {
+        if (snoozeOption === "lastUsed" && lastUsedReminder) {
+          snoozeTime = Number(lastUsedReminder.until);
+        } else if (snoozeOption === "laterToday" && hasLaterTodayOption) {
           snoozeTime = laterTodayTime.getTime();
         } else if (snoozeOption === "tomorrowMorning") {
           const tomorrowMorning = new Date(

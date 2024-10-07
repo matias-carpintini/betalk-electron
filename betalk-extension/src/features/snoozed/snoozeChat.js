@@ -4,6 +4,7 @@ import { archiveChat } from "../../whatsappStore/archiveChat";
 import { getChatDetails } from "../../whatsappStore/getChatDetails";
 import { generateSnoozedChatsCSS } from "./clues";
 import { loadSnoozedChatsFromStorage } from "./storage";
+import { triggerCustomToast } from "../../whatsappStore/customToasts";
 
 // Function to send the snooze request to the background script
 // The background script in in charge of setting up the chrome alarm that fires events
@@ -55,6 +56,10 @@ export function requestSnooze(chat, snoozeTime, snoozeCondition) {
             getChatDetails(chat.chatId);
           }
         }
+
+        const formattedSnoozeTime = formatTimestamp(snoozeTime);
+        const toastMessage = `Reminder set: ${formattedSnoozeTime} ${snoozeCondition}`;
+        triggerCustomToast(toastMessage, "H");
       } else {
         console.error("Failed to snooze chat.");
       }

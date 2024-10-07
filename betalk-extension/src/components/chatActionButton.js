@@ -3,7 +3,12 @@ export function chatActionButton(
   onClick = {},
   classList = "",
   actionName = "",
+<<<<<<< HEAD
   shortcutHint = ""
+=======
+  shortcutHint = "",
+  active = false
+>>>>>>> recovered-branch
 ) {
   // Create button element
   const button = document.createElement("button");
@@ -14,7 +19,7 @@ export function chatActionButton(
 
   // Create span element for icon
   const iconSpan = document.createElement("span");
-  iconSpan.className = "material-symbols-outlined";
+  iconSpan.className = `material-symbols-outlined ${active ? "fill" : ""}`;
   iconSpan.textContent = icon;
 
   // Append the span to the button

@@ -53,7 +53,9 @@
         "src/whatsappStore/scripts/archiveChatEventListener.js",
         "src/whatsappStore/scripts/chatsSync.js",
         "src/whatsappStore/scripts/focusLastMessage.js",
-        "src/whatsappStore/scripts/forwardFilterHandler.js"
+        "src/whatsappStore/scripts/forwardFilterHandler.js",
+        "src/whatsappStore/scripts/openArchivedChatsDrawer.js",
+        "src/whatsappStore/scripts/customToasts.js"
       ],
       "matches": ["https://web.whatsapp.com/*"]
     }

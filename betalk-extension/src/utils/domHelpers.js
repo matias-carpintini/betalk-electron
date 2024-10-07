@@ -77,6 +77,7 @@ export function formatTimestamp(timestamp) {
   const date = new Date(timestamp);
   const currentYear = new Date().getFullYear();
   const formatOptions = {
+    weekday: "long", // "Saturday"
     month: "short", // "Aug"
     day: "numeric", // "30"
     hour: "numeric", // "10"

@@ -18,13 +18,14 @@
     let chatId = chat.__x_id._serialized;
     let chatUsername = chat.__x_formattedTitle;
     let chatPhone = chat.__x_id.user;
+    let chatArchived = chat.__x_archive;
 
     // Dispatch a custom event with the fiber data and chat ID
     window.postMessage(
       {
         type: "CHAT_FIBER_RESULT",
         selector: selector,
-        chat: { chatId, chatUsername, chatPhone },
+        chat: { chatId, chatUsername, chatPhone, chatArchived },
       },
       "*"
     );

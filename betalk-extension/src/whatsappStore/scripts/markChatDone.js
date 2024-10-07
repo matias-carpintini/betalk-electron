@@ -1,4 +1,6 @@
 (function () {
+  window.Store = Object.assign({}, window.require("WAWebCollections"));
+
   // Function to archive a chat given a chatId
   function doneChat(chatId) {
     window.Store = Object.assign({}, window.require("WAWebCollections"));

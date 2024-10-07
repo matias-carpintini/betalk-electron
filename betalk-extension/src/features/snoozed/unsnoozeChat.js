@@ -1,3 +1,4 @@
+import { triggerCustomToast } from "../../whatsappStore/customToasts";
 import { unarchiveChat } from "../../whatsappStore/unarchiveChat";
 import { generateSnoozedChatsCSS } from "./clues";
 import { loadSnoozedChatsFromStorage } from "./storage";
@@ -44,6 +45,8 @@ export function initializeUnsnoozed() {
           existingReminderElement.remove();
         }
       }
+
+      triggerCustomToast("Reminder removed", "H");
     }
   });
 

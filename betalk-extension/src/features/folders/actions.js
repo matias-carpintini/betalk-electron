@@ -8,6 +8,7 @@ import {
 } from "./storage";
 import { filterChats } from "../../whatsappStore/filterChats";
 import { initializeUI } from "./ui";
+import { triggerCustomToast } from "../../whatsappStore/customToasts";
 
 export function updateContactsInFolder(folderId, contactId, archived) {
   const targetFolder = folders.find((f) => f.id === folderId);
@@ -51,6 +52,8 @@ export function updateContactsInFolder(folderId, contactId, archived) {
     );
     updateUIWithUpdatedFolderName(folder.id, folder.name, totalChatsCount);
   });
+
+  triggerCustomToast("Moved to Folder", "V");
 }
 
 export function switchFolder(folderId) {

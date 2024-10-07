@@ -9,12 +9,24 @@
 
 kbd {
   display: inline-block;
-  padding: 4px 7px !important;
-  color: #e9edef;
-  background-color: #2a2f32;
-  border: 1px solid #3b3e42 !important;
+  padding: 4px 8px !important;
+  color: var(--primary-strong);
+  background-color: rgba(var(--primary-rgb), 0.12);
+  border: 1px solid rgba(var(--primary-rgb), 0.24) !important;
   border-radius: 4px;
-  box-shadow: 0 2px 0 #1e2124;
+  box-shadow: 0 1px 1px rgba(var(--shadow-rgb), 0.08);
+  font-size: 0.75rem;
+}
+
+.x1wkzo03 {
+  background: rgb(11 20 26) !important;
+
+  kbd {
+    color: #e9edef;
+    background-color: rgba(209, 215, 219, 0.12);
+    border: 1px solid rgba(209, 215, 219, 0.24) !important;
+    box-shadow: 0 1px 1px rgba(11, 20, 26, 0.08);
+  }
 }
 
 // Reminders feature

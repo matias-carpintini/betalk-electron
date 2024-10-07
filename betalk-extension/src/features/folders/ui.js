@@ -88,7 +88,7 @@ export function initializeUI() {
       chatMenu.children[0].remove(); // Remove archive button since we have custom actions and we need space here
 
       chatMenu.insertChildAtIndex(
-        chatMenuItem("Move to", "v", () => moveToForm(chatId, archived)),
+        chatMenuItem("Move to", "V", () => moveToForm(chatId, archived)),
         0
       );
     }

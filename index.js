@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, session, screen, shell } = require("electron"); // Add screen module
+const { app, BrowserWindow, ipcMain, session, screen, shell} = require("electron"); // Add screen module
 const path = require("path");
 const fs = require("fs");
 const AutoLaunch = require("auto-launch");
@@ -70,12 +70,12 @@ function createWindow() {
       console.error("Failed to load extension:", err);
     });
 
-  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    if (url.startsWith('https:') || url.startsWith('http:')) {
-      shell.openExternal(url);
-      return { action: 'deny' };
-    }
-    return { action: 'allow' };
+    mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+      if (url.startsWith('https:') || url.startsWith('http:')) {
+        shell.openExternal(url);
+        return { action: 'deny' };
+      }
+      return { action: 'allow' };
   });
 }
 

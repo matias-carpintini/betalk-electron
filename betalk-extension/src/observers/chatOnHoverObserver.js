@@ -28,13 +28,18 @@ window.addEventListener("message", (event) => {
     // Check if the data attributes are already set and match the current chat
     if (
       chatElement &&
-      (chatElement.dataset.chatId !== chat.chatId ||
-        chatElement.dataset.chatUsername !== chat.chatUsername ||
-        chatElement.dataset.chatPhone !== chat.chatPhone)
+      (chatElement.dataset.chatId !== chat.chatId.toString() ||
+        chatElement.dataset.chatUsername !==
+          (chat.chatUsername ?? "undefined").toString() ||
+        chatElement.dataset.chatPhone !==
+          (chat.chatPhone ?? "undefined").toString() ||
+        chatElement.dataset.chatArchived !==
+          (chat.chatArchived ?? "undefined").toString())
     ) {
       chatElement.dataset.chatId = chat.chatId;
       chatElement.dataset.chatUsername = chat.chatUsername;
       chatElement.dataset.chatPhone = chat.chatPhone;
+      chatElement.dataset.chatArchived = chat.chatArchived;
 
       chatOnHoverEvent(chat, chatElement);
     }

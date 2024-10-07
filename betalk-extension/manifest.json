@@ -1,0 +1,63 @@
+{
+  "name": "Betalk",
+  "description": "If WhatsApp and SuperHuman had a baby",
+  "version": "1.0.2",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "activeTab", "scripting", "alarms", "tabs"],
+  "content_scripts": [
+    {
+      "matches": ["*://web.whatsapp.com/*"],
+      "run_at": "document_end",
+      "js": ["dist/main.js"],
+      "type": "module"
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "public/images/icon.png",
+      "32": "public/images/icon.png",
+      "48": "public/images/icon.png",
+      "128": "public/images/icon.png"
+    }
+  },
+  "icons": {
+    "16": "public/images/icon.png",
+    "32": "public/images/icon.png",
+    "48": "public/images/icon.png",
+    "128": "public/images/icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "public/images/icon.svg",
+        "public/images/icon.svg",
+        "src/whatsappStore/scripts/archiveChat.js",
+        "src/whatsappStore/scripts/unarchiveChat.js",
+        "src/whatsappStore/scripts/openDrawerLeft.js",
+        "src/whatsappStore/scripts/getChatDetails.js",
+        "src/whatsappStore/scripts/filterChats.js",
+        "src/whatsappStore/scripts/flashFocusedMsg.js",
+        "src/whatsappStore/scripts/requestSnoozeForm.js",
+        "src/whatsappStore/scripts/markChatDone.js",
+        "src/whatsappStore/scripts/messagesListener.js",
+        "src/whatsappStore/scripts/openContextMenu.js",
+        "src/whatsappStore/scripts/getChatFiberFromDOM.js",
+        "src/whatsappStore/scripts/requestMoveToForm.js",
+        "src/whatsappStore/scripts/focusPreviousChat.js",
+        "src/whatsappStore/scripts/focusNextChat.js",
+        "src/whatsappStore/scripts/composeFocus.js",
+        "src/whatsappStore/scripts/archiveChatEventListener.js",
+        "src/whatsappStore/scripts/chatsSync.js",
+        "src/whatsappStore/scripts/focusLastMessage.js",
+        "src/whatsappStore/scripts/forwardFilterHandler.js",
+        "src/whatsappStore/scripts/openArchivedChatsDrawer.js",
+        "src/whatsappStore/scripts/customToasts.js"
+      ],
+      "matches": ["https://web.whatsapp.com/*"]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "voltapp",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -8,7 +8,7 @@
     "package": "electron-forge package",
     "make": "DEBUG=electron-forge:* electron-forge make",
     "publish": "DEBUG=electron-forge:* electron-forge publish",
-    "build": "electron-builder"
+    "dist": "electron-builder"
   },
   "author": "",
   "license": "ISC",
@@ -33,6 +33,24 @@
     "update-electron-app": "^3.0.0"
   },
   "build": {
+    "appId": "com.volt.app",
+    "productName": "volt",
+    "directories": {
+      "output": "releases/${platform}/${arch}"
+    },
+    "mac": {
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "./entitlements.plist",
+      "entitlementsInherit": "./entitlements.plist",
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    },
     "extraResources": [
       "./betalk-extension"
     ],

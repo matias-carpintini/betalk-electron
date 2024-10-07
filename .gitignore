@@ -7,3 +7,4 @@ betalk-extension/webpack.config.js
 betalk-extension/.babelrc
 out/
 dist/
+releases/

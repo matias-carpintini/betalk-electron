@@ -4,9 +4,18 @@ const fs = require("fs");
 const AutoLaunch = require("auto-launch");
 const { exec } = require("child_process");
 const { updateElectronApp } = require("update-electron-app");
+
 updateElectronApp();
 
 let mainWindow;
+
+// Dynamically import the electron-context-menu
+(async () => {
+  const contextMenu = await import('electron-context-menu');
+  contextMenu.default({
+    showInspectElement: false // Disable the "Inspect Element" option
+  });
+})();
 
 // Read version from package.json
 const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')));

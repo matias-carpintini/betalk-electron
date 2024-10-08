@@ -25,14 +25,9 @@ export function initializeDone() {
           `check${!!chat.chatArchived ? "_circle" : ""}`,
           () => markChatDone(chat.chatId),
           "doneBtn",
-<<<<<<< HEAD
-          "Mark as Done",
-          "E"
-=======
           !!chat.chatArchived ? "Mark not Done" : "Mark Done",
           "E",
           !!chat.chatArchived
->>>>>>> recovered-branch
         );
 
         if (existingDoneBtn) {

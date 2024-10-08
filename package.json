@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "auto-launch": "^5.0.6",
+    "electron-context-menu": "^4.0.4",
     "electron-squirrel-startup": "^1.0.1",
     "minify": "^11.4.1",
     "update-electron-app": "^3.0.0"
@@ -47,17 +48,21 @@
       "target": [
         {
           "target": "dmg",
-          "arch": ["x64", "arm64"]
+          "arch": [
+            "x64",
+            "arm64"
+          ]
         }
       ]
     },
     "extraResources": [
       "./betalk-extension"
     ],
-    "icon": "assets/ray.icns",
+    "icon": "assets/big icon white rectangle with shadow.png",
     "files": [
       "**/*",
-      "!betalk-extension/.git"
+      "!betalk-extension/.git",
+      "!**/.git/**"
     ],
     "dmg": {
       "sign": true
@@ -67,25 +72,5 @@
     "type": "git",
     "url": "https://github.com/matias-carpintini/betalk-electron.git"
   },
-  "electronVersion": "32.1.2",
-  "forge": {
-    "packagerConfig": {
-      "osxSign": {
-        "identity": "Apple Development: Miguel Morkin (PJNDLJG6MN)"
-      },
-      "osxNotarize": {
-        "tool": "notarytool",
-        "appleApiKey": "./signing/AuthKey_DQ3GN5MR42.p8",
-        "appleApiKeyId": "DQ3GN5MR42",
-        "appleApiIssuer": "c8d6bf76-c8d9-400a-a255-92b87ebefffd"
-      },
-      "icon": "assets/ray.icns",
-      "extraResource": ["betalk-extension"],
-      "asar": {
-        "unpack": "{{**/*.node,**/*.node},**/*.node}"
-      },
-      "overwrite": true,
-      "ignore": ["^/out/"]
-    }
-  }
+  "electronVersion": "32.1.2"
 }

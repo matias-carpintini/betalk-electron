@@ -29,11 +29,7 @@ export function snoozedChatsDrawer() {
 
   openDrawerLeft(
     drawer("Reminders", chatElements),
-<<<<<<< HEAD
-    `snoozedChats ${snoozedChats.length}`
-=======
     `snoozedChats ${snoozedChats ? snoozedChats.length : 0}`
->>>>>>> recovered-branch
   );
 
   // This make a request to WhatsApp through injected scripts

@@ -12,7 +12,6 @@
 
     // Check if the message matches the specific toast we want to block
     const toastAction = toast.props?.initialAction?.text?.props?.content[0];
-    console.log(toastAction);
 
     switch (toastAction) {
       case "Archiving chat":

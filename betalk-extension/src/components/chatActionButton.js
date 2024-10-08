@@ -3,12 +3,8 @@ export function chatActionButton(
   onClick = {},
   classList = "",
   actionName = "",
-<<<<<<< HEAD
-  shortcutHint = ""
-=======
   shortcutHint = "",
   active = false
->>>>>>> recovered-branch
 ) {
   // Create button element
   const button = document.createElement("button");

@@ -3,7 +3,7 @@
   window.Store.ModalManager = require("WAWebModalManager").ModalManager;
 
   window.Store.ModalManager.on("open_modal", (modal) => {
-    if (modal.props.onForward) {
+    if (modal.props.onForward || modal.props.msgs) {
       // reset folder filter
       window.Store.Chat._models.forEach(function (chat_model) {
         Object.defineProperty(chat_model, "__x_shouldAppearInList", {

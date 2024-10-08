@@ -4,10 +4,15 @@ const fs = require("fs");
 const AutoLaunch = require("auto-launch");
 const { exec } = require("child_process");
 const { updateElectronApp } = require("update-electron-app");
+const  {autoUpdater, AppUpdater } = require("electron-updater");
 
 updateElectronApp();
 
 let mainWindow;
+
+//Basic flags
+autoUpdater.autoDownload = false;
+autoUpdater.autoInstallOnAppQuit = true;
 
 // Dynamically import the electron-context-menu
 (async () => {
@@ -86,6 +91,9 @@ function createWindow() {
       }
       return { action: 'allow' };
   });
+
+  // Check for updates
+  autoUpdater.checkForUpdatesAndNotify();
 }
 
 function shouldHandleURL(url) {
@@ -130,3 +138,28 @@ function handleProtocolLink(url) {
     mainWindow.loadURL(url);
   }
 }
+
+// AutoUpdater event listeners
+autoUpdater.on('update-available', () => {
+  console.log('Update available.');
+});
+
+autoUpdater.on('update-not-available', () => {
+  console.log('Update not available.');
+});
+
+autoUpdater.on('error', (err) => {
+  console.error('Error in auto-updater:', err);
+});
+
+autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+  console.log(log_message);
+});
+
+autoUpdater.on('update-downloaded', () => {
+  console.log('Update downloaded');
+  // Optionally, you can prompt the user to restart the app to apply the update
+});

@@ -8,7 +8,7 @@ module.exports = {
     osxSign: {
       identity: "Developer ID Application: Miguel Morkin (9DQK3P85J6)"
     },
-    icon: "assets/ray.icns",
+    icon: "assets/volt icon 512.png",
     osxNotarize: {
       tool: "notarytool",
       keychainProfile: "voltnotary"

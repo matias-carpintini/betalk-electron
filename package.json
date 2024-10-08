@@ -1,28 +1,18 @@
 {
-  "name": "voltapp",
+  "name": "volt",
   "version": "1.0.8",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "DEBUG=electron-forge:* electron-forge make",
-    "publish": "DEBUG=electron-forge:* electron-forge publish",
+    "start": "electron .",
+    "package": "electron-builder",
     "dist": "electron-builder"
   },
-  "author": "",
+  "author": "Labity",
   "license": "ISC",
   "description": "volt Electron application",
   "devDependencies": {
     "@electron-forge/cli": "^7.5.0",
-    "@electron-forge/maker-deb": "^7.5.0",
-    "@electron-forge/maker-rpm": "^7.5.0",
-    "@electron-forge/maker-squirrel": "^7.5.0",
-    "@electron-forge/maker-zip": "^7.5.0",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.5.0",
-    "@electron-forge/plugin-fuses": "^7.5.0",
-    "@electron-forge/publisher-github": "^7.5.0",
-    "@electron/fuses": "^1.8.0",
     "electron": "^32.1.2",
     "electron-builder": "^25.0.5"
   },
@@ -58,7 +48,7 @@
     "extraResources": [
       "./betalk-extension"
     ],
-    "icon": "assets/big icon white rectangle with shadow.png",
+    "icon": "assets/volt icon 512.png",
     "files": [
       "**/*",
       "!betalk-extension/.git",
@@ -70,7 +60,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/matias-carpintini/betalk-electron.git"
+    "url": "https://github.com/mmorkin/volt"
+  },
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
   },
   "electronVersion": "32.1.2"
 }

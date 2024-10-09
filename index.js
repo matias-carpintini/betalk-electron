@@ -18,7 +18,15 @@ autoUpdater.autoInstallOnAppQuit = true;
 (async () => {
   const contextMenu = await import('electron-context-menu');
   contextMenu.default({
-    showInspectElement: false // Disable the "Inspect Element" option
+    showInspectElement: false, // Disable the "Inspect Element" option
+    prepend: (defaultActions, params, browserWindow) => [
+      {
+        label: 'Emoji and Symbols',
+        click: () => {
+          exec('osascript -e "tell application \\"System Events\\" to keystroke \\" \\" using {control down, command down}"');
+        }
+      }
+    ]
   });
 })();
 

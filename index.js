@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, session, screen, shell} = require("electron"); // Add screen module
+const { app, BrowserWindow, ipcMain, session, screen, shell, dialog } = require("electron"); // Add screen module
 const path = require("path");
 const fs = require("fs");
 const AutoLaunch = require("auto-launch");
@@ -55,7 +55,9 @@ function createWindow() {
   });
 
   mainWindow.webContents.on("did-finish-load", () => {
-    mainWindow.setTitle(`Volt v${appVersion}`); // Update the title after the page loads
+    mainWindow.setTitle(`Volt v${appVersion}`);
+    // Check for updates after the window has loaded
+    autoUpdater.checkForUpdates();
   });
 
   mainWindow.webContents.on("will-navigate", (event, url) => {
@@ -101,9 +103,6 @@ function createWindow() {
       }
       return { action: 'allow' };
   });
-
-  // Check for updates
-  autoUpdater.checkForUpdatesAndNotify();
 }
 
 function shouldHandleURL(url) {
@@ -150,26 +149,64 @@ function handleProtocolLink(url) {
 }
 
 // AutoUpdater event listeners
-autoUpdater.on('update-available', () => {
-  console.log('Update available.');
+autoUpdater.on('checking-for-update', () => {
+  console.log('Checking for updates...');
+  dialog.showMessageBox(mainWindow, {
+    type: 'info',
+    title: 'Checking for updates',
+    message: 'Checking for updates. Please wait...'
+  });
 });
 
-autoUpdater.on('update-not-available', () => {
-  console.log('Update not available.');
+autoUpdater.on('update-available', (info) => {
+  console.log('Update available:', info);
+  dialog.showMessageBox(mainWindow, {
+    type: 'info',
+    title: 'Update Available',
+    message: `A new update (version ${info.version}) is available. Do you want to download it now?`,
+    buttons: ['Yes', 'No']
+  }).then((result) => {
+    if (result.response === 0) {  // 'Yes' button
+      autoUpdater.downloadUpdate();
+    }
+  });
+});
+
+autoUpdater.on('update-not-available', (info) => {
+  console.log('Update not available:', info);
+  dialog.showMessageBox(mainWindow, {
+    type: 'info',
+    title: 'No Updates',
+    message: `You are using the latest version (${info.version}) of the app.`
+  });
 });
 
 autoUpdater.on('error', (err) => {
   console.error('Error in auto-updater:', err);
+  dialog.showErrorBox('Error', 'An error occurred while updating: ' + err);
 });
 
 autoUpdater.on('download-progress', (progressObj) => {
-  let log_message = "Download speed: " + progressObj.bytesPerSecond;
-  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-  console.log(log_message);
+  let message = `Downloading update: ${Math.round(progressObj.percent)}%`;
+  console.log(message);
+  mainWindow.setProgressBar(progressObj.percent / 100);
+  mainWindow.setTitle(`Volt v${appVersion} - ${message}`);
 });
 
-autoUpdater.on('update-downloaded', () => {
-  console.log('Update downloaded');
-  // Optionally, you can prompt the user to restart the app to apply the update
+autoUpdater.on('update-downloaded', (info) => {
+  console.log('Update downloaded:', info);
+  dialog.showMessageBox(mainWindow, {
+    type: 'info',
+    title: 'Update Ready',
+    message: `Update to version ${info.version} downloaded. The application will restart to install the update.`,
+    buttons: ['Restart Now', 'Later']
+  }).then((result) => {
+    if (result.response === 0) {  // 'Restart Now' button
+      autoUpdater.quitAndInstall();
+    }
+  });
 });
+
+if (process.env.NODE_ENV === 'development') {
+  autoUpdater.forceDevUpdateConfig = true;
+}

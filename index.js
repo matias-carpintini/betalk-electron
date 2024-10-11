@@ -154,7 +154,8 @@ autoUpdater.on('checking-for-update', () => {
   dialog.showMessageBox(mainWindow, {
     type: 'info',
     title: 'Checking for updates',
-    message: 'Checking for updates. Please wait...'
+    message: 'Checking for updates. Please wait...',
+    buttons: [] // Remove buttons to make it non-blocking
   });
 });
 

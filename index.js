@@ -6,8 +6,6 @@ const { exec } = require("child_process");
 const { updateElectronApp } = require("update-electron-app");
 const  {autoUpdater, AppUpdater } = require("electron-updater");
 
-updateElectronApp();
-
 let mainWindow;
 
 //Basic flags
@@ -38,7 +36,7 @@ function createWindow() {
   const { height } = screen.getPrimaryDisplay().workAreaSize; // Get the height of the primary display
 
   mainWindow = new BrowserWindow({
-    width: 1024,
+    width: 1280,
     height: height, // Set the height to match the screen height
     title: `Volt v${appVersion}`, // Set the title with version number
     webPreferences: {
@@ -103,6 +101,9 @@ function createWindow() {
       }
       return { action: 'allow' };
   });
+
+  // Check for updates
+  autoUpdater.checkForUpdates();
 }
 
 function shouldHandleURL(url) {
@@ -206,7 +207,3 @@ autoUpdater.on('update-downloaded', (info) => {
     }
   });
 });
-
-if (process.env.NODE_ENV === 'development') {
-  autoUpdater.forceDevUpdateConfig = true;
-}

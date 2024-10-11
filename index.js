@@ -1,10 +1,9 @@
-const { app, BrowserWindow, ipcMain, session, screen, shell, dialog } = require("electron"); // Add screen module
+const { app, BrowserWindow, ipcMain, session, screen, shell, dialog } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const AutoLaunch = require("auto-launch");
 const { exec } = require("child_process");
-const { updateElectronApp } = require("update-electron-app");
-const  {autoUpdater, AppUpdater } = require("electron-updater");
+const { autoUpdater, AppUpdater } = require("electron-updater");
 
 let mainWindow;
 

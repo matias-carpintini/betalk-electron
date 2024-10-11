@@ -18,6 +18,7 @@ import {
   focusLastMessageListener,
   focusLastMessage,
 } from "../../whatsappStore/focusLastMessage";
+import { composeBoxEmitter } from "../../whatsappStore/composeBoxEmitter";
 
 const isMac = navigator.platform.toLowerCase().includes("mac");
 
@@ -26,6 +27,29 @@ export function setupKeyboardListeners() {
   focusPreviousChatListener();
   composeFocusListener();
   focusLastMessageListener();
+  composeBoxEmitter();
+
+  window.addEventListener("message", (event) => {
+    if (event.data.type === "COMPOSEBOX_FOCUSED") {
+      const chatsContainer = getElementByXpath(
+        `//*[@id="app"]/div/div[2]/div[3]`
+      );
+
+      if (chatsContainer.dataset.archived === "true") {
+        chatsContainer.dataset.archived = false;
+      } else {
+        chatsContainer.classList.add("shrinked");
+      }
+    }
+
+    if (event.data.type === "ARCHIVE_CHAT_EVENT") {
+      const chatsContainer = getElementByXpath(
+        `//*[@id="app"]/div/div[2]/div[3]`
+      );
+      chatsContainer.classList.remove("shrinked");
+      chatsContainer.dataset.archived = true;
+    }
+  });
 
   document.addEventListener(
     "keydown",
@@ -69,6 +93,11 @@ export function setupKeyboardListeners() {
         !event.altKey &&
         !event.shiftKey
       ) {
+        const chatsContainer = getElementByXpath(
+          `//*[@id="app"]/div/div[2]/div[3]`
+        );
+        chatsContainer.classList.remove("shrinked");
+
         const activeElement = document.activeElement;
         if (
           activeElement &&
@@ -99,7 +128,14 @@ export function setupKeyboardListeners() {
           'div[contenteditable="true"].x1hx0egp.x6ikm8r.x1odjw0f.x1k6rcq7.x6prxxf:not(.x1whj5v)'
         );
         if (messageInput) {
+          const chatsContainer = getElementByXpath(
+            `//*[@id="app"]/div/div[2]/div[3]`
+          );
+          chatsContainer.classList.add("shrinked");
+          // Removed console.log(".shrinked added by ENTER");
+
           messageInput.focus();
+
           event.preventDefault();
           event.stopPropagation();
         }

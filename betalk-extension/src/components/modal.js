@@ -3,6 +3,7 @@ export default class Modal {
     this.modalContent = options.modalContent || "";
     this.formHandler = options.formHandler || null;
     this.shortcutHandler = options.shortcutHandler || null; // Custom shortcut handler
+    this.keyHandler = options.keyHandler || null; // Custom key handler
 
     this.modalElement = this.createModalElement();
 
@@ -94,12 +95,18 @@ export default class Modal {
   openModal() {
     document.body.appendChild(this.modalElement);
     document.addEventListener("keydown", this.handleKeyDown, true); // Capture keydown events
+    if (this.keyHandler) {
+      document.addEventListener("keydown", this.keyHandler, true); // Add custom key handler
+    }
   }
 
   closeModal() {
     document.body.removeChild(this.modalElement);
     document.removeEventListener("keydown", this.handleKeyDown, true); // Remove keydown event listener
     document.removeEventListener("keydown", this.handleEscKey);
+    if (this.keyHandler) {
+      document.removeEventListener("keydown", this.keyHandler, true); // Remove custom key handler
+    }
     const backdrop = this.modalElement.querySelector(
       "[data-animate-modal-backdrop]"
     );

@@ -1,8 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 110 109">
-	<g transform="matrix(1,0,0,1,0,0)" fill="#f8d99b">    
-		<rect width="110" height="109"></rect>
-	</g>
-	<g transform="matrix(1.8430753250050798,0,0,1.8430753250050798,15.466031993639358,-17.069509952010947)" fill="#002c6a">
-		<path d="M29.28 37.08 c6.9 0.96 11.16 5.16 11.16 10.92 c0 7.08 -6.24 12 -20.1 12 l-16.44 0 c-0.84 0 -1.44 -0.42 -1.44 -1.14 l0 -0.24 c0 -1.68 2.4 -2.4 2.4 -5.16 l0 -29.52 c0 -2.76 -2.4 -3.48 -2.4 -5.16 l0 -0.24 c0 -0.72 0.6 -1.14 1.44 -1.14 l16.62 0 c10.8 0 15.72 4.8 15.72 10.8 c0 4.5 -2.76 7.8 -6.96 8.88 z M15.66 24.72 l0 7.56 c0 1.98 1.32 3.12 3.24 3.12 l3 0 c3.06 0 5.04 -2.22 5.04 -5.64 c0 -5.16 -2.7 -8.16 -6.78 -8.16 l-1.68 0 c-1.56 0 -2.82 0.72 -2.82 3.12 z M23.04 55.8 c3.84 0 6 -2.52 6 -6.24 c0 -4.44 -3.66 -9.96 -10.86 -9.96 l-2.52 0 l0 11.1 c0 2.88 1.74 5.1 4.5 5.1 l2.88 0 z"></path>
-	</g>
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" viewBox="1.57 1.6 28.83 28.83" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:export>
+      <bx:file format="png" path="icon white rectangle.png" width="512" height="512" antialiasing="false" dpi="400"/>
+    </bx:export>
+    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0.1 0.1 0 0.5 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0"/>
+      <feOffset dx="0.1" dy="0.1"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="1"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0.1 0 0.5 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0"/>
+      <feOffset dx="0" dy="0.1"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="1"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="drop-shadow-filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0.1 0 0.5 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0"/>
+      <feOffset dx="0" dy="0.1"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="1"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="3.932" y="4.205" width="24.106" height="23.62" rx="5" ry="5" style="stroke: rgb(0, 0, 0); stroke-width: 0px; fill: rgb(255, 255, 255); filter: url(&quot;#drop-shadow-filter-1&quot;);">
+    <title>white app icon</title>
+  </rect>
+  <path d="M 9.78 25.73 C 8.824 25.73 8.009 25.416 7.413 24.805 C 6.563 23.933 6.3 22.603 6.677 21.057 L 8.851 12.134 C 9.227 10.588 10.7 9.087 12.199 8.701 L 20.903 6.473 C 22.41 6.086 23.707 6.356 24.558 7.227 C 25.407 8.099 25.671 9.429 25.294 10.975 L 23.12 19.898 C 22.743 21.444 21.271 22.944 19.772 23.33 L 11.068 25.56 C 10.622 25.667 10.192 25.73 9.78 25.73 Z M 21.236 7.767 L 12.532 10.004 C 11.507 10.265 10.393 11.406 10.13 12.458 L 7.956 21.381 C 7.694 22.45 7.833 23.322 8.343 23.852 C 8.851 24.373 9.71 24.517 10.753 24.247 L 19.457 22.019 C 20.482 21.758 21.596 20.608 21.849 19.566 L 24.022 10.643 C 24.286 9.573 24.145 8.701 23.637 8.171 C 23.129 7.641 22.278 7.507 21.236 7.767 Z M 15.994 19.826 C 13.944 19.826 12.27 18.11 12.27 16.007 C 12.27 13.905 13.944 12.188 15.994 12.188 C 18.045 12.188 19.72 13.905 19.72 16.007 C 19.72 18.11 18.045 19.826 15.994 19.826 Z M 15.994 13.536 C 14.662 13.536 13.584 14.641 13.584 16.007 C 13.584 17.373 14.662 18.478 15.994 18.478 C 17.326 18.478 18.405 17.373 18.405 16.007 C 18.405 14.641 17.326 13.536 15.994 13.536 Z" fill="#10B981" style="filter: url(&quot;#drop-shadow-filter-2&quot;); visibility: hidden;"/>
+  <image width="23.267" height="23.267" x="4.351" y="4.381" style="filter: url(&quot;#drop-shadow-filter-0&quot;);" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIABAMAAAAGVsnJAAAACXBIWXMAAD2EAAA9hAHVrK90AAAAHlBMVEUAAABw57du57du57dv57dH1KEvyJNE0p5P2KUQuYGhO6cBAAAACnRSTlMAQID/v///6v//iZHz0QAACYFJREFUeJzt3IGR3EQQBVB51wEASqApJQAsAVyViYEMgAzIgQwgW7y2z74djTTdMyP92f79I+h+dX9W2pN2miKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEDs/36AHQ+RE9ADiXn9ETgHNlB1jIAS43coArO8DCDnAjB7iwAyzsADdygAs7wMwO8IEc4N4AaoArO8BCDvCpAcwAV3aAhR3gRg5wYQdY2AFu5AAXdoCFHeADOcBrA2gBruwACznA1wawAlzZARZygHc3coALO8DCDnAjB7iwAyzsADdygAs7wJUdYCEHeGgAI8CVHWAhB3h3Iwd4zw6wsAPcyAEu7AALO8CNHCBtAB3AlR0gPQLYAFYNYANYNYANYNUAMoB1A8gA3rMDrBtABrDenwsgcwRwAWQawAWQ2Z8KINcAKoCZHSB3BDABZBvABLC+ESIDyDaACCDfACKAfAOIAPINIALI788DsHEE8ABsNIAHYGN/GoCtBtAAbDWABuADOcBmA1gANi4DeQA2jwASgO0GkABsN4AEYLsBHADvtvfnANg5AjgAdhrAAbCzPwXAXgMoAPYaQAGweSNEArDbAAaAnctADoDdI4AAYL8BBAD7DSAA2G+Af4C9GyEKgMIR4B+g0AD/AIX93QOUGuAeoNQA9wCl/b0DFBvgHaBwGegfoHgEOAcoN8A5QLkBzgHKDfANoGiAb4DMW3JcAIoG+AZQ7O8aQHMEuAbQNMA1gGZ/zwCqBngGmNkBVEeAYwBdAxwDKG6EfAPoGuAXQNkAvwDKBvgFUDbAL4Byf7cA2iPALYC2AW4BtPt7BVA3wCvAzA6w+3AoAYC+AU4BtJeBbgHUH4JOAQwN8AlgaIBPAEMDfAIY9ncJYDkCXAJYGuASwLK/RwBTAzwCmBrgEUB/I+QTwNYAhwCWy0CXALYjwB+AsQH+AIwN8AdgbIA7gNJbcu4BrEeAOwBrA9wBWPf3BmBugDcAcwO8AZj3dwZgb4AzAOtloDsA+xHgC6CiAb4AKhrgC6CiAa4AzDdC3gA0b8m5BqhpgCuA0q6//5nJX79V5zv0wkmKH4L//JfJvzV/Np+DXjhNsQGdAX5BL5ymOHFnAEEvnKR8GdgZAL1wmvJlYF+A4RpQ/hDsC/ATeuEkihuhvgCC3jiJ4kaoK8ATNqAvwBM2oC+AoDdOorkR6gnwjA3oCjDcPZRm6J4Agl44ierbwJ4A6IXTqL4K6Agw3BGgmrojgKAXTqL7PrwjAHrhNPPJAMM1QPdtYD+AF/TCSZT/EeoHIOiNkyj/I9QN4Ekb0A/gGW+EugIIeuMk2v+J9gJ41gZ0AxitAeoHg3oBCHrhJOrHInoBoBdOo/6faCeA4Y4A9eSdAAS9cBL9g0GdANALp5lPBhiuAfq35PoACHrhJIZH4/oAjPZYhOHRuC4AwzXA8GBQF4DRLgMtD4d2ARD0xkksD4f2AHjmBnQBGK0BpjckegAIeuEkpufDOwD8il44jenh0A4Awx0Bpuk7AAh64SS2NyQ6AKAXTmN7PLodYLgG2H4upB1A0AsnMb4j1A6AXjiN8R2hZoDhGmB8Q6IZYLTLQOtbcs0Agt44ifUtuVaAZ29AM8BoDTC/JdcKIOiNk5hflG0EeO4boQ4AT/lwaE8AQS+cxP6qeCMAeuE09vdE2wCG+xA0798IIOiFk1T8WEIbAHrhNBU/ltAEMFwDKl4VbwIY7TKw5udCmgAEvXGSmp8LaQHw0IAmAA8NaAIQ9MZJqn4upAHARQNaAJ7/RqgRQNALJ6k6AloA0AunqWpAA8BwR0DV/g0Agl44SV0DGgDQC6eZTwYYrgF1R0A9wAt64SSVDagHEPTGSWpuhFoAvDSgGsDFjVALgKA3TlLbgFoANw2oBRitAZWXgfUAgl44SfURUAuAXjhNdQMqAYY7Aqr3rwQQ9MJJ3tX/COrfuR9V/aMEgF64Y+aaP5vhGtCQKoAX9NQdUwUw2ltyLakB8NSAKoDhLgNbUgMg6KF7pgLAVQNqAFw1oAZA0DN3TQUAeuS+sQP4OgIqAAQ9ct/YAdATd44ZwFkD7ACCnrhzzACeboTusQJ4a4AZwNdl4GQHEPTAvWMEcNcAK4C7BlgBBD1v99gAhntLrj02AH9HgBFA0OP2jw0APe0BMQE4bIANQNDTHhATAHrYI2IB8NgAE4C/y8DJBiDoYY+IAcBlAywALhtgARD0rIdED+DwRugePcBwb8n1iR5A0KMeEz0AetKDogbw+SFoABD0pAdFDYAe9KhoAbw2QA3g8zJw0gMIetCjogRw2wAtgNsGaAEEPedh0QH4bYASwOmN0D06AEGPeVx0AOgpD4wKwPERoAMQ9JQHRgWAHvLIaAA8N0AF8IIe8shoAAQ95JFRALhugAbA743QPQoAQc94aMoAvhugAPDdAAWAoEc8NmUA9IQHpwjg/AgoAwh6woNTBEAPeHRKAN4bUAQQ9IBHpwTg7S25VQoA7htQAnB+GTgVAQQ93+HZB/DfgAKA/wYUAAQ93vHZBXD6cOhDdgEIjoB9AEFPd0J2AdDDnZE9AIYG7AIIergzsgfg/kbonh0AigbsARBcBk67AIKe7ZRsA3A0YAeAowE7AIIe7ZxsAjDcCN2zCUByBGwDCHqyk7IJgB7srGwBsDRgE0DQg52VLQD0XKdlA4CmAVsAJJeB0yaAoOc6LXkAngZsAPA0YANA0GOdlywAUQPyAI7fklslCyDoqU5MFgA91JnJATAdAVkAQQ91ZnIA6JlOTQaAqgE5gBf0TKcmAyDomU7NGoCrARkAohuhe9YAgh7p3KwAyBqwBiBrwBpA0BOdnBUAeqCzkwKwHQErAEEPdHZSAPQ8pycBoGtACvCCnuf0JAAUD4c+5BGArwEJANtl4JQCCHqc8/MAQNiARwDCBjwCCHoaQB4A0MMg8haA8Qh4ABD0MIjM5A14C0DZgLcAgp4FkjcAfDdC98zkDXgDwHgZOL0FEPQomMzkDfgGQNqAbwCCngSUVwCWt+RWmcmPgK8Agh4ElVcA9BywzOQNeAUQ9BywzOQN+ALA24AvAKyXgdMrgKDHwGUmb8BnAOIGfAYQ9BTAzMw3QvfcAZjekltlJm/AJwD0DNDM3B+CnwAEPQM0M3kDPgJwN+AjAPNl4HQHEPQI2MzkDZhm8gZMs6AnAOcH9ADofI8eIBKJRCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikQhD/gedna9z0BvGmQAAAABJRU5ErkJggg==">
+    <title>green icon 512</title>
+  </image>
 </svg>

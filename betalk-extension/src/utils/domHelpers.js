@@ -20,7 +20,8 @@ export function isUserTyping() {
   return (
     activeElement.tagName === "INPUT" ||
     activeElement.tagName === "TEXTAREA" ||
-    activeElement.isContentEditable
+    activeElement.isContentEditable ||
+    document.querySelector(".modal")
   );
 }
 

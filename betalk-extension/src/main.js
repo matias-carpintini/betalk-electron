@@ -15,6 +15,7 @@ import { openContextMenuListener } from "./whatsappStore/openContextMenu";
 import { getChatFiberFromDOMListener } from "./whatsappStore/getChatFiberFromDOM";
 import { initializeDone } from "./features/done";
 import { customToasts } from "./whatsappStore/customToasts";
+import { chatEventEmitter } from "./whatsappStore/chatEventEmitter";
 
 // Inject font styles into the page
 const link1 = document.createElement("link");
@@ -77,6 +78,7 @@ const callback = function (mutationsList, observer) {
         removeWhatsAppSpam();
         addStartupMessage();
         customToasts();
+        chatEventEmitter();
 
         break;
       }

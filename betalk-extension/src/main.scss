@@ -140,6 +140,22 @@ kbd {
   .modal-body {
     padding-top: 12px;
   }
+
+  .modal-footer {
+    margin-left: 36px;
+    margin-right: 36px;
+    padding-bottom: 12px;
+    border-top: 1px solid var(--background-default-hover);
+
+    .footer-option {
+      margin-left: -36px;
+      margin-right: -36px;
+
+      button.option {
+        width: 100%;
+      }
+    }
+  }
 }
 
 // General Container Style
@@ -154,6 +170,37 @@ kbd {
   }
 }
 
+.snooze-options:has(#npl-suggestions .option) > .option {
+  display: none;
+}
+
+.nlp-container {
+  padding: 15px 36px;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: "";
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--unread-marker-background);
+  }
+
+  .npl-input {
+    padding: 0px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    flex: 1;
+  }
+}
+
 // Option Style
 .option {
   padding: 15px 36px;
@@ -165,6 +212,11 @@ kbd {
   font-size: 14px;
   color: var(--text-primary);
 
+  &.selected-option {
+    border-color: var(--background-default-hover);
+    background: rgba(var(--primary-rgb), 0.12);
+  }
+
   // Hide the radio button
   input[type="radio"] {
     position: absolute;
@@ -172,22 +224,11 @@ kbd {
     pointer-events: none; // Ensure it does not interfere with clicking
   }
 
-  // Border and background color when selected
-  &:has(input[type="radio"]:checked)::after {
-    content: "";
-    width: 4px;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: var(--unread-marker-background);
-  }
-
   // Option Hover Style
-  &:not(:has(input[type="date"])):hover {
-    border-color: var(--background-default-hover);
-    background: rgba(var(--primary-rgb), 0.12);
-  }
+  // &:not(:has(input[type="date"])):hover {
+  //   border-color: var(--background-default-hover);
+  //   background: rgba(var(--primary-rgb), 0.12);
+  // }
 
   // Input Style
   input[type="radio"] {
@@ -233,6 +274,7 @@ kbd {
   -webkit-appearance: menulist; // Resets the appearance
   -moz-appearance: menulist;
   appearance: menulist;
+  border: none;
 }
 
 .material-symbols-outlined {
@@ -360,4 +402,40 @@ button:hover .tooltip {
 
 .tooltip kbd {
   margin-left: 8px;
+}
+
+.shrinked {
+  flex: 0 0 0 !important;
+  overflow: hidden !important;
+}
+
+.closeChatsContainer {
+  display: none;
+}
+
+#app:has(._aigv._aigw.shrinked) .closeChatsContainer {
+  display: block;
+}
+
+.x1ky8ojb.x78zum5.x1q0g3np.x1a02dak.x2lah0s.x3pnbk8.xfex06f.xeuugli.x2lwn1j.x1nn3v0j.x1ykpatu.x1swvt13.x1pi30zi
+  button:not(.volt) {
+  display: none;
+}
+
+._ajv6.x1y1aw1k.x1sxyh0.xwib8y2.xurb0ha .x10l6tqk {
+  display: none;
+}
+
+#app:has(._aigv._aigw.shrinked) {
+  .two ._aigw {
+    flex: 0 0 0%;
+    max-width: 0%;
+  }
+
+  .three ._aigw,
+  .three ._aig- {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: calc(100% - var(--navbar-width));
+  }
 }

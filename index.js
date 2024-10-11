@@ -45,6 +45,8 @@ function createWindow() {
       contextIsolation: true,
     },
     autoHideMenuBar: true,
+    titleBarStyle: 'customButtonsOnHover',
+    frame: false
   });
 
   mainWindow.loadURL("https://web.whatsapp.com", {

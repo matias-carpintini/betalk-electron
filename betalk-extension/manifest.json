@@ -55,7 +55,9 @@
         "src/whatsappStore/scripts/focusLastMessage.js",
         "src/whatsappStore/scripts/forwardFilterHandler.js",
         "src/whatsappStore/scripts/openArchivedChatsDrawer.js",
-        "src/whatsappStore/scripts/customToasts.js"
+        "src/whatsappStore/scripts/customToasts.js",
+        "src/whatsappStore/scripts/composeBoxEmitter.js",
+        "src/whatsappStore/scripts/chatEventEmitter.js"
       ],
       "matches": ["https://web.whatsapp.com/*"]
     }

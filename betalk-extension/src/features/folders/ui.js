@@ -60,7 +60,7 @@ export function initializeUI() {
   // Add settings button after folders
   const settingsButton = document.createElement("button");
   settingsButton.className =
-    "xjb2p0i x1ypdohk x972fbf xcfux6l x1qhh985 xm0m39n x1mvgj39 x6prxxf xo1l8bm x1btupbp x1yrsyyn x10b6aqq";
+    "xjb2p0i x1ypdohk x972fbf xcfux6l x1qhh985 xm0m39n x1mvgj39 x6prxxf xo1l8bm x1btupbp x1yrsyyn x10b6aqq volt";
   settingsButton.style.background = "inherit";
   settingsButton.style.paddingLeft = "8px";
   settingsButton.innerHTML = `

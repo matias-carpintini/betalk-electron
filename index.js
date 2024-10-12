@@ -150,13 +150,13 @@ function handleProtocolLink(url) {
 
 // AutoUpdater event listeners
 autoUpdater.on('checking-for-update', () => {
-  console.log('Checking for updates...');
-  dialog.showMessageBox(mainWindow, {
-    type: 'info',
-    title: 'Checking for updates',
-    message: 'Checking for updates. Please wait...',
-    buttons: [] // Remove buttons to make it non-blocking
-  });
+  console.log('Checking for updates...')
+  //dialog.showMessageBox(mainWindow, {
+  //  type: 'info',
+  //  title: 'Checking for updates',
+  //  message: 'Checking for updates. Please wait...',
+  //  buttons: [] // Remove buttons to make it non-blocking
+  //});
 });
 
 autoUpdater.on('update-available', (info) => {

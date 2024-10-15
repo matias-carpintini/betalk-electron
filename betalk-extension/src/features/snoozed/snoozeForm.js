@@ -18,30 +18,9 @@ export function snoozeForm(chat) {
 
   const now = new Date();
 
-  let initialCustomDate = "";
-  let initialCustomTime = "";
-  let snoozeCondition = "regardless"; // Default condition
+  let snoozeCondition = "ifNoReply"; // Default condition
 
   if (existingReminder && existingReminder.until) {
-    const timestamp = Number(existingReminder.until);
-    const reminderDate = new Date(timestamp);
-
-    // Extract local date and time components
-    const localYear = reminderDate.getFullYear();
-    const localMonth = reminderDate.getMonth();
-    const localDay = reminderDate.getDate();
-    const localHours = reminderDate.getHours();
-    const localMinutes = reminderDate.getMinutes();
-
-    // Format as YYYY-MM-DD and HH:MM
-    initialCustomDate = `${localYear}-${String(localMonth + 1).padStart(
-      2,
-      "0"
-    )}-${String(localDay).padStart(2, "0")}`;
-    initialCustomTime = `${String(localHours).padStart(2, "0")}:${String(
-      localMinutes
-    ).padStart(2, "0")}`;
-
     snoozeCondition = existingReminder.snoozeCondition;
   }
 
@@ -73,6 +52,20 @@ export function snoozeForm(chat) {
       0
     );
     return `${days[tomorrow.getDay()]}, 8:00 AM`;
+  }
+
+  // Function to format a future date as "DAY, TIME"
+  function getFormattedFutureDate(daysAhead, hour = 8, minute = 0) {
+    const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    const futureDate = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate() + daysAhead,
+      hour,
+      minute,
+      0
+    );
+    return `${days[futureDate.getDay()]}, ${hour}:00 AM`;
   }
 
   // Determine if "Last Used" should be displayed
@@ -108,6 +101,30 @@ export function snoozeForm(chat) {
     </label>
   `
     : "";
+
+  const inTwoDaysOptionHTML = `
+    <label class="option">
+      <span style="flex: 1;">
+        <input type="radio" name="snoozeOption" value="inTwoDays">
+        In 2 Days
+      </span>
+      <span>
+        ${getFormattedFutureDate(2)}
+      </span>
+    </label>
+  `;
+
+  const inAWeekOptionHTML = `
+    <label class="option">
+      <span style="flex: 1;">
+        <input type="radio" name="snoozeOption" value="inAWeek">
+        In a Week
+      </span>
+      <span>
+        ${getFormattedFutureDate(7)}
+      </span>
+    </label>
+  `;
 
   const snoozeFormContent = `
     <form id="snoozeForm">
@@ -146,6 +163,8 @@ export function snoozeForm(chat) {
                   ${getFormattedTomorrow()}
                 </span>
               </label>
+              ${inTwoDaysOptionHTML}
+              ${inAWeekOptionHTML}
             </div>
           </div>
         </div>
@@ -162,7 +181,7 @@ export function snoozeForm(chat) {
                 type="submit"
                 class="option"
               >
-                Remove Reminder & Move to Inbox
+                Remove Reminder${chat.archived ? " & Move to Inbox" : ""} 
                 </button>
               </div>
             </div>
@@ -197,6 +216,28 @@ export function snoozeForm(chat) {
             0
           );
           snoozeTime = tomorrowMorning.getTime();
+        } else if (snoozeOption === "inTwoDays") {
+          const inTwoDays = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate() + 2,
+            8,
+            0,
+            0,
+            0
+          );
+          snoozeTime = inTwoDays.getTime();
+        } else if (snoozeOption === "inAWeek") {
+          const inAWeek = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate() + 7,
+            8,
+            0,
+            0,
+            0
+          );
+          snoozeTime = inAWeek.getTime();
         } else if (snoozeOption === "npl") {
           const nplFormattedDate = formData.get("formattedDate");
           snoozeTime = new Date(nplFormattedDate).getTime();
@@ -270,6 +311,8 @@ export function snoozeForm(chat) {
         </label>
       `;
         nplSuggestions.innerHTML = newOptionHTML;
+      } else if (inputText) {
+        nplSuggestions.innerHTML = "<label class='option'></label>";
       } else {
         nplSuggestions.innerHTML = "";
       }
@@ -278,6 +321,29 @@ export function snoozeForm(chat) {
   document.getElementById("nplDate").focus();
 
   const snoozeOptionsContainer = document.getElementById("snoozeForm");
+
+  // Use event delegation to handle clicks on radio buttons
+  snoozeOptionsContainer.addEventListener("click", (event) => {
+    if (event.target.matches("input[type='radio']")) {
+      const form = document.getElementById("snoozeForm");
+      const formData = new FormData(form);
+
+      // Determine the action based on the selected option
+      const selectedOption = event.target.closest(".option");
+      const action =
+        selectedOption && selectedOption.dataset.action === "remove"
+          ? "remove"
+          : "submit";
+      formData.set("formAction", action);
+
+      modal.formHandler(formData).then((success) => {
+        if (success) {
+          modal.closeModal(); // Close the modal on success
+        }
+      });
+    }
+  });
+
   let currentIndex = -1;
 
   function updateSelection(index) {
@@ -337,4 +403,9 @@ export function snoozeForm(chat) {
       });
     }
   }
+
+  // Attach the key handler to the snooze form
+  snoozeOptionsContainer.addEventListener("keydown", handleArrowKeys);
+
+  document.getElementById("nplDate").focus();
 }

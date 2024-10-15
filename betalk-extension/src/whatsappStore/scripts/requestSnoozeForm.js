@@ -14,6 +14,7 @@
       const chat = window.Store.Chat.getActive();
       const chatId = chat.__x_id._serialized;
       const userName = chat.__x_formattedTitle;
+      const archived = chat.__x_archive;
 
       // Send the chat details back to the content script
       window.postMessage(
@@ -21,6 +22,7 @@
           type: "OPEN_SNOOZE_FORM",
           chatId: chatId,
           userName: userName,
+          archived: archived,
         },
         "*"
       );

@@ -15,12 +15,14 @@
     const chat = window.Store.Chat.get(chatId);
     const userName = chat.__x_formattedTitle;
     const lastMsg = chat.__x_previewMessage.__x_body;
+    const archived = chat.__x_archive;
 
     return {
       chatId: chatId,
       profilePic: "",
       userName: userName,
       lastMsg: lastMsg,
+      archived: archived,
     };
   }
 

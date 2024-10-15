@@ -11,7 +11,8 @@ export function getChatDetailsListener() {
       event.data.type === "CHAT_DETAILS_RESPONSE" &&
       event.data.chat
     ) {
-      const { chatId, userName, lastMsg, profilePic } = event.data.chat;
+      const { chatId, userName, lastMsg, profilePic, archived } =
+        event.data.chat;
       const chatContainer = document.querySelector(
         `.unloadedChat[data-chat-id="${chatId}"]`
       );
@@ -41,7 +42,11 @@ export function getChatDetailsListener() {
       chatContainer
         .querySelector(".reminderBtn")
         .addEventListener("click", () => {
-          snoozeForm({ chatId: chatId, chatUsername: userName });
+          snoozeForm({
+            chatId: chatId,
+            chatUsername: userName,
+            archived: archived,
+          });
         });
     }
   });

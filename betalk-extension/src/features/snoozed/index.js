@@ -68,7 +68,13 @@ export function initializeSnoozed() {
       ) {
         const chatId = event.data.chatId;
         const userName = event.data.userName;
-        snoozeForm({ chatId: chatId, chatUsername: userName });
+        const archived = event.data.archived;
+
+        snoozeForm({
+          chatId: chatId,
+          chatUsername: userName,
+          archived: archived,
+        });
       }
     });
   });
